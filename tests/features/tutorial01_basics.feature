@@ -1,3 +1,4 @@
+# Goal:	Show basics, make first steps
 Feature: Showing off behave - tutorial01
 
     Scenario: Run a simple test
