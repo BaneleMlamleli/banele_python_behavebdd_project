@@ -10,7 +10,7 @@ def user_is_on_the_login_page(context):
 @When('user enter "{username}" and "{password}"')
 def user_enter_username_and_password(context, username, password):
     context.login_domain = LoginDomain(username, password)
-    context.login_domain.enter_credentials
+    assert_that(context.login_domain.enter_credentials, equal_to(f'Entered username: {username}, password {password}'))
 
 # @And('clicks on login button')
 # def clicks_on_login_button(context):
@@ -20,9 +20,9 @@ def user_enter_username_and_password(context, username, password):
 @Then('user successfully logs in and redirected to their profile page')
 def user_successfully_logs_in_and_redirected_to_their_profile_page(context):
     context.login_domain = LoginDomain
-    context.login_domain.correct_login_details
+    assert_that(context.login_domain.correct_login_details, equal_to('user successfully logs in and redirected to their profile page'))
 
 @Then('popup error message is displayed')
 def popup_error_message_is_displayed(context):
     context.login_domain = LoginDomain
-    context.login_domain.incorrect_login_details
+    assert_that(context.login_domain.incorrect_login_details, equal_to('popup error message is displayed'))
